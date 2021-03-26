@@ -17,18 +17,16 @@ add_filter( 'gettext', 'techiepress_change_woo_text', 100, 3 );
 
 function techiepress_change_woo_text( $translated_string, $text_tring, $text_domain ) {
 
-    switch( $translated_string ) {
-        case 'Billing details':
-            $translated_string = __( 'Personal Details', $text_domain );
-        break;
+    if( $translated_string === 'Billing details' ) {
+        $translated_string = __( 'Personal Info', $text_domain );
+    }
 
-        case 'Your order':
-            $translated_string = __( 'Order Details', $text_domain );
-        break;
-        
-        case 'Additional information':
-            $translated_string = __( 'Order Info', $text_domain );
-        break;
+    if( $translated_string ===  'Your order' ) {
+        $translated_string = __( 'Order Info', $text_domain );
+    }
+    
+    if( $translated_string === 'Additional information') {
+        $translated_string = __( 'Order Information', $text_domain );
     }
 
     return $translated_string;
